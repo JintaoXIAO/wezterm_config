@@ -67,6 +67,10 @@ Config.window_padding = { left = 5, right = 5, top = 5, bottom = 5 }
 Config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 Config.window_background_opacity = 1.0
 
+---initial window size (columns x rows)
+Config.initial_cols = 140
+Config.initial_rows = 40
+
 ---platform-specific window chrome
 if is_mac then
   Config.macos_window_background_blur = 0

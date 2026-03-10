@@ -17,14 +17,14 @@ if is_mac then
     { family = "Apple Color Emoji" },
     { family = "Noto Color Emoji" },
   }
-  Config.font_size = 11.0
+  Config.font_size = 14.0
 else
   Config.font = wt.font_with_fallback {
     { family = "Consolas", weight = "Regular" },
     { family = "Segoe UI Emoji" },
     { family = "Noto Color Emoji" },
   }
-  Config.font_size = 11.0
+  Config.font_size = 14.0
 end
 
 Config.line_height = 1.0
