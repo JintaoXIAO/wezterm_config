@@ -50,13 +50,13 @@ M.scheme = {
   quick_select_match_bg = { Color = "#FFEF82" },
   quick_select_match_fg = { Color = "#0A4422" },
   tab_bar = {
-    background = "#0D6434",
-    inactive_tab_edge = "#3DA06A",
+    background = "#063D1E",
+    inactive_tab_edge = "#063D1E",
     active_tab = { bg_color = "#73FA91", fg_color = "#0A4422" },
-    inactive_tab = { bg_color = "#0E5C2F", fg_color = "#D0E8D5" },
-    inactive_tab_hover = { bg_color = "#13773D", fg_color = "#E3F6E8", italic = true },
-    new_tab = { bg_color = "#0E5C2F", fg_color = "#D0E8D5" },
-    new_tab_hover = { bg_color = "#3DA06A", fg_color = "#E3F6E8", italic = true },
+    inactive_tab = { bg_color = "#166B3A", fg_color = "#C0DCC5" },
+    inactive_tab_hover = { bg_color = "#1E8F4E", fg_color = "#E3F6E8", italic = true },
+    new_tab = { bg_color = "#0F5A2E", fg_color = "#C0DCC5" },
+    new_tab_hover = { bg_color = "#1E8F4E", fg_color = "#E3F6E8", italic = true },
   },
 }
 

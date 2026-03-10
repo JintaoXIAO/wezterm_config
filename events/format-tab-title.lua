@@ -7,7 +7,7 @@
 local wt = require "wezterm"
 local fs = require("utils.fn").fs
 
----macOS Terminal style tab titles: "process — directory"
+---Provide tab title text; the fancy tab bar handles the rounded-rectangle chrome.
 wt.on("format-tab-title", function(tab, _, _, config, _, _)
   if not config.enable_tab_bar then
     return
@@ -15,11 +15,7 @@ wt.on("format-tab-title", function(tab, _, _, config, _, _)
 
   local pane = tab.active_pane
 
-  ---get process name
-  local proc = pane.foreground_process_name or ""
-  proc = fs.basename(proc):gsub("%.exe$", "")
-
-  ---get cwd
+  ---get cwd (basename only)
   local cwd = ""
   if pane.current_working_dir then
     local full_cwd = type(pane.current_working_dir) == "userdata"
@@ -27,14 +23,22 @@ wt.on("format-tab-title", function(tab, _, _, config, _, _)
       or pane.current_working_dir
     cwd = fs.basename(full_cwd)
   end
-
-  ---format like macOS Terminal: "zsh — project-dir"
-  if cwd ~= "" and proc ~= "" then
-    return proc .. " — " .. cwd
-  elseif proc ~= "" then
-    return proc
+  if cwd == "" then
+    cwd = (tab.tab_title and #tab.tab_title > 0) and tab.tab_title or pane.title
   end
 
-  local title = (tab.tab_title and #tab.tab_title > 0) and tab.tab_title or pane.title
-  return title
+  ---unseen output indicator
+  local unseen = false
+  for _, p in ipairs(tab.panes) do
+    if p.has_unseen_output then
+      unseen = true
+      break
+    end
+  end
+
+  local idx = tab.tab_index + 1
+  local indicator = unseen and "●" or tostring(idx)
+
+  ---wide padding on both sides to push tabs apart
+  return ("   %s  %s   "):format(indicator, cwd)
 end)

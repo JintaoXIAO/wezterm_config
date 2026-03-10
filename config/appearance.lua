@@ -84,11 +84,13 @@ else
   Config.integrated_title_buttons = { "Hide", "Maximize", "Close" }
 end
 
----window frame (for fancy/native tab bar)
+---window frame (fancy tab bar title area + integrated buttons)
 Config.window_frame = {
-  font_size = 13.0,
-  active_titlebar_bg = "#0D6434",
-  inactive_titlebar_bg = "#0A4422",
+  font_size = 14.0,
+  active_titlebar_bg = "#063D1E",
+  inactive_titlebar_bg = "#042E16",
+  active_titlebar_fg = "#C0DCC5",
+  inactive_titlebar_fg = "#8AAB90",
 }
 
 ---exit behavior
