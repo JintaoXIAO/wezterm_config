@@ -62,9 +62,9 @@ Config.visual_bell = {
   fade_out_duration_ms = 200,
 }
 
----window appearance - browser-style integrated tabs at the very top
-Config.window_padding = { left = 5, right = 5, top = 5, bottom = 5 }
-Config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+---window appearance - native title bar + bottom tab bar
+Config.window_padding = { left = 5, right = 5, top = 8, bottom = 0 }
+Config.window_decorations = "TITLE | RESIZE"
 Config.window_background_opacity = 1.0
 
 ---initial window size (columns x rows)
@@ -75,13 +75,6 @@ Config.initial_rows = 40
 if is_mac then
   Config.macos_window_background_blur = 0
   Config.native_macos_fullscreen_mode = true
-  Config.integrated_title_button_alignment = "Left"
-  Config.integrated_title_button_style = "MacOsNative"
-  Config.integrated_title_buttons = { "Close", "Hide", "Maximize" }
-else
-  Config.integrated_title_button_alignment = "Right"
-  Config.integrated_title_button_style = "Windows"
-  Config.integrated_title_buttons = { "Hide", "Maximize", "Close" }
 end
 
 ---window frame (fancy tab bar title area + integrated buttons)

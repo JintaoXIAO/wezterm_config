@@ -5,7 +5,9 @@
 ---@diagnostic disable: undefined-field
 
 local wt = require "wezterm"
-local fs = require("utils.fn").fs
+local Utils = require "utils"
+local fs = Utils.fn.fs
+local Icon = Utils.class.icon
 
 ---Provide tab title text; the fancy tab bar handles the rounded-rectangle chrome.
 wt.on("format-tab-title", function(tab, _, _, config, _, _)
@@ -36,9 +38,12 @@ wt.on("format-tab-title", function(tab, _, _, config, _, _)
     end
   end
 
-  local idx = tab.tab_index + 1
-  local indicator = unseen and "●" or tostring(idx)
+  ---resolve process icon from Icon.Progs
+  local proc = fs.basename(pane.foreground_process_name or "")
+  local icon = Icon.Progs[proc]
 
-  ---wide padding on both sides to push tabs apart
-  return ("   %s  %s   "):format(indicator, cwd)
+  local idx = tab.tab_index + 1
+  local indicator = unseen and " ●" or (icon and " " .. icon or " " .. tostring(idx))
+
+  return ("%s  %s  "):format(indicator, cwd)
 end)
